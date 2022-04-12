@@ -86,13 +86,24 @@
 </head>
 <body onload="document.getElementById('id01').style.display='block'" style="width:auto;">
 	<div id="id01" class="modal">
-		<form class="modal-content animate" name="Login" action="" onsubmit="return(validate())">
+		@if(Session::has('success'))
+			<div>
+				<h4>{{Session::get('success') }}</h4>
+			</div>
+		@endif
+		@if(Session::has('fail'))
+			<div>
+				<h4>{{Session::get('fail') }}</h4>
+			</div>
+		@endif
+		<form class="modal-content animate" name="Login" action="/verify" method="POST" onsubmit="return(validate())">
+			@csrf
 			<h3>Login<br>Enter login credential</h3>
 			<div class="container">
 				<!-- <label for="aadhar no"><b>Aadhar number</b></label> -->
-				<input type="number" placeholder="Enter your employee id." name="uname" required><br><br>
+				<input type="number" placeholder="Enter your employee id." name="Employee_ID" required><br><br>
 				<!-- <label for="passwd"><b>Mobile number</b></label> -->
-				<input type="password" placeholder="Enter your password" name="passwd" required><br><br>
+				<input type="password" placeholder="Enter your password" name="Mobile_No" required><br><br>
 				<button type="submit">Submit</button>
 			</div>
 		</form>

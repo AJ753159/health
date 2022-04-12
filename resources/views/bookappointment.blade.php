@@ -84,8 +84,8 @@
             <input type="text" id="gender" placeholder="select time" name="gender" required>
         </div>
         <div class="form-group">
-            {{ Form::label('date', 'Date:') }}
-            {{ Form::text('date', $payment->date, array('class' => 'datepicker','id' => 'datepicker')) }}                           
+            {{-- {{ Form::label('date', 'Date:') }}
+            {{ Form::text('date', $payment->date, array('class' => 'datepicker','id' => 'datepicker')) }}                            --}}
         </div>
 
         <script type="text/javascript">

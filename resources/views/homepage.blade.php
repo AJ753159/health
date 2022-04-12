@@ -136,7 +136,7 @@ body{
 .rect9{
     display: flex;
     flex-wrap:wrap ;
-    background: #575459CC;
+    background: #575459;
     width: 100%;
     justify-content: center;
 
@@ -146,6 +146,20 @@ body{
     font-size: 30px;
     padding-top: 10px;
     padding: 10px;
+}
+.footer{
+    background: #575459;
+    width: 100%;
+    height: 10vh;
+    /* position: fixed; */
+    bottom:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer p{
+    color: white;
+
 }
 
 
@@ -178,8 +192,8 @@ body{
     </div>
 
     <div class="rect6">
-        <a href="staff_login"><img src="pathology/reception.jpg" alt="reception"></a>
-        <a href="staff_login"><img src="pathology/admin.png" alt="admin"></a>
+        <a href="staff_login"><img src="pathology/Ellipse 4.png" alt="reception"></a>
+        <a href="staff_login"><img src="pathology/Ellipse 5.png" alt="admin"></a>
     </div>
     <div class="rect7">
         <p>Our Facilities</p>
@@ -191,7 +205,7 @@ body{
         <img src="pathology/img4.jpg">
         <img src="pathology/img5.jpg">
     </div>
-    <div class="rect9">
+    <div class="footer">
         <p>All Rights Reserved!</p>
     </div>
 

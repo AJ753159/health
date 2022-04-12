@@ -4,8 +4,8 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<script type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<style type="text/css">
+	{{-- <link rel="stylesheet" type="text/css" href="style.css"> --}}
+	<style type="text/css">	
 	body {
 		font-family: Arial, Helvetica, sans-serif;
 		background-size: cover;
@@ -84,14 +84,26 @@
 </style>
 </head>
 <body onload="document.getElementById('id01').style.display='block'" style="width:auto;">
+
 	<div id="id01" class="modal">
-		<form class="modal-content animate" name="Login" action="Patient" onsubmit="return(validate())">
+		@if(Session::has('success'))
+			<div>
+				<h4>{{Session::get('success') }}</h4>
+			</div>
+		@endif
+		@if(Session::has('fail'))
+			<div>
+				<h4>{{Session::get('fail') }}</h4>
+			</div>
+		@endif
+		<form class="modal-content animate" name="Login" action="/check" method="post" onsubmit="return(validate())">
+			@csrf
 			<h3>Login<br>Enter login credential</h3>
 			<div class="container">
 				<!-- <label for="aadhar no"><b>Aadhar number</b></label> -->
-				<input type="number" placeholder="Enter your aadhar no." name="uname" required><br><br>
+				<input type="number" placeholder="Enter your aadhar no." name="Aadharno" required><br><br>
 				<!-- <label for="passwd"><b>Mobile number</b></label> -->
-				<input type="number" placeholder="Enter your mobile no." name="passwd" required><br><br>
+				<input type="number" placeholder="Enter your mobile no." name="mobileno" required><br><br>
 				<button type="submit">Submit</button>
 			</div>
 		</form>

@@ -264,7 +264,7 @@
    		<div class="Info-3">
       		<div class="tile" style="width: 70%; ">
         			<div class="icon" style="width: 262px; height: 245px; background: #DBDBDB;  ">
-              		<a href="">
+              		<a href="doctor_profile">
               			<img class="image" src="pathology/doctor_profile.jpg" style="width: 228px; height: 181px;padding: 5%; ">
               			<div class="Option1">
               				<h5>View Profile</h5>

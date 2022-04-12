@@ -10,7 +10,7 @@
         margin:0;
     }
     body{
-        background-color: #5CDB9566;
+        background: rgba(131, 103, 123, 0.4);
         /* justify-content: center; */
         /* padding: 140px */
         margin-top: 50px;
@@ -26,7 +26,7 @@
         padding: 20px;
         justify-content: center;
     }
-    .name input[type=text]{
+    .name input[type=number]{
 
 			width: 70%;
 		  	padding: 12px 20px;
@@ -34,7 +34,7 @@
 		  	display: inline-block;
 		  	border: 1px solid #ccc;
 		  	box-sizing: border-box;
-			border-radius: 30px;
+			/* border-radius: 30px; */
     }
     .address{
         display: flex;
@@ -49,7 +49,7 @@
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
-        border-radius: 30px;
+        /* border-radius: 30px; */
     }
 
     .mobile{
@@ -83,13 +83,15 @@
         justify-content: center;
     }
     .aadhar input[type=number]{
+        /* width: 886px; */
+        /* height: 98px; */
         width: 70%;
          padding: 12px 20px;
          margin: 8px 0;
          display: inline-block;
          border: 1px solid #ccc;
          box-sizing: border-box;
-         border-radius: 30px;
+         /* border-radius: 30px; */
         }
     .photo{
         display: flex;
@@ -103,7 +105,22 @@
         font-size: 20px;
     }
 
-
+    .select_role{
+        /* width: 70%; */
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        justify-content: center;
+    }
+    select{
+        width: 70%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        /* border-radius: 30px; */
+    }
     button {
         background: #A8ADD9;
         color: white;
@@ -142,37 +159,29 @@
         {{ session('status') }}
     </div>
     @endif
-    <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="/register" enctype="multipart/form-data">
+    <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="/newstaff" enctype="multipart/form-data">
         @csrf
         <div class="name">
-            <input type="text" id="name" placeholder="Enter your name" name="Name" required>
+            <input type="number" id="name" placeholder="Enter Employee Id" name="Employee_ID" required>
 
         </div>
         <div class="address">
-            <input type="text" id="address" placeholder="Enter your address" name="Address" required>
-        </div>
-        <div class="mobile">
-            <input type="number" id="mobile no." placeholder="Enter your mobile no." name="mobileno" required>
-            <input type="text" id="gender" placeholder="gender" name="gender" required>
+            <input type="text" id="address" placeholder="Enter Email Address of Employee" name="Email_id" required>
         </div>
 
         <div class="aadhar">
-            <input type="number" id="aadhar no." placeholder="Enter your aadhar no." name="Aadharno" required>
+            <input type="number" id="aadhar no." placeholder="Enter Password" name="Mobile_No" required>
         </div>
-        <div class="photo">
-            <label for="myfile">Select photo : </label>
-            <input type="file" id="image" name="image" required>
-            @error('image')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-            @enderror
-
-            <label for="myfile">Select a aadhar image : </label>
-            <input type="file" id="Aadharimg" name="Aadharimg" required>
-            @error('Aadharimg')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-            @enderror
+        <div class="select_role">
+            <select name="emp_role" required>
+                <option value="">Select role</option>
+                <option value="doctor">Doctor</option>
+                <option value="nonmedical">Non Medical</option>
+                <option value="pathology">Pathology</option>
+            </select>
         </div>
-        <button type="submit">Submit</button>
+        
+        <button type="submit">Generate Login</button>
     </form>
     <div class="footer">
         <p>All Rights Reserved.</p>

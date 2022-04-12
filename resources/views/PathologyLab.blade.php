@@ -17,7 +17,22 @@
 
     }
     body{
-        background-color: #97CAEF;
+      background: rgba(151, 202, 239, 0.5);
+    }
+    .header{
+        /* align-items: center; */
+        display:flex;
+        /* flex-wrap: wrap; */
+        position: relative;
+        top: 0;
+        display: flex;
+        /* height: 25%; */
+    }
+    h2{
+      bottom: 50px;
+      /* padding-right: 100px; */
+      right: 200px;
+      position: absolute;
     }
     .header1{
         align-items: center;
@@ -227,9 +242,9 @@
   <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap" rel="stylesheet"> -->
 </head>
 <body>
-  <div class="container">
-    <x-header>
-      <div class="mainarea">
+  {{-- <div class="container"> --}}
+
+      <div class="header">
         <div class="Info-1">
           <div class="tile1">
               <div class="icon">
@@ -242,19 +257,14 @@
         <div class="Info-2">
           <div class="tile1">
               <div class="icon">
-                  <a href="">
-                    <img class="image2" src="pathology/Logout-removebg-preview.png">
-                  </a>
+                <h2>{{ $data->{'Employee_name'} }}</h2>
+                <a href="">
+                  <img class="image2" src="pathology/Logout-removebg-preview.png">
+                </a>
               </div>
           </div>
         </div>
       </div>
-    </x-header>    
-
-      
-
-  
-    
       <!-- <div class="header1"><img src="Logo.png" style="width: 320px; height: 100px;">
         <div class="log">
           <a href="logout.php"><img src="Logout.png" style="width: 70px; height: 69px; position: absolute; right: 10px; padding: 1%; "></a>
@@ -265,7 +275,7 @@
    		<div class="Info-3">
       		<div class="tile" style="width: 70%; ">
         			<div class="icon" style="width: 262px; height: 245px; background: #DBDBDB;  ">
-              		<a href="">
+              		<a href="pathology_profile">
               			<img class="image" src="pathology/doctor_profile.jpg" style="width: 228px; height: 181px;margin: 5%; ">
               			<div class="Option1">
               				<h5>View Profile</h5>
@@ -277,7 +287,7 @@
     		<div class="Info-4">
       		<div class="tile">
         			<div class="icon" style="width: 270px; height: 246px; background: #DBDBDB;" >
-              		<a href="">
+              		<a href="view_test">
               			<img class="image" src="pathology/view_test1.png" style="width: 243px; height: 192px; margin: 5%; background: linear-gradient(0deg, rgba(227, 231, 45, 0.3), rgba(227, 231, 45, 0.3));">
   	            		<div class="Option2">
   	                		<h5>View Schedule Test</h5>
@@ -287,7 +297,7 @@
       		</div>
     		</div>
     </div>    
-  </div>
+  {{-- </div> --}}
   <div class="footer">
     <p>All Rights Reserved!</p>
   </div>

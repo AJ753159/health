@@ -24,7 +24,7 @@
 
     }
     body{
-        background-color: #CAB1A5;
+      background: rgba(131, 103, 123, 0.4);
     }
     .header1{
         align-items: center;
@@ -279,7 +279,7 @@
    		<div class="Info-3">
       		<div class="tile" style="width: 70%; ">
         			<div class="icon" style="width: 262px; height: 245px; background: #DBDBDB;  ">
-              		<a href="">
+              		<a href="admin_profile">
               			<img class="image" src="pathology/view-profile1.png" style="width: 228px; height: 181px;margin: 5%; background: linear-gradient(0deg, rgba(250, 2, 2, 0.2), rgba(250, 2, 2, 0.2));">
               			<div class="Option1">
               				<h5>View Profile</h5>
@@ -303,7 +303,7 @@
         <div class="Info-4">
           <div class="tile">
               <div class="icon" style="width: 270px; height: 246px; background: #DBDBDB;" >
-                  <a href="">
+                  <a href="view-update_profile">
                     <img class="image" src="pathology/edit_profile1.png" style="width: 243px; height: 192px; margin: 5%; background: linear-gradient(0deg, rgba(46, 67, 253, 0.2), rgba(46, 67, 253, 0.2));">
                     <div class="Option2">
                         <h5>View Appointment</h5>

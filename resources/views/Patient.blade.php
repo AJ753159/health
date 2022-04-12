@@ -3,10 +3,10 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patient</title>
-	<link href="mainT.css" rel="stylesheet" type="text/css" />
+	{{-- <link href="mainT.css" rel="stylesheet" type="text/css" /> --}}
   <style type="text/css">
     body{
-        background-color: #E3AFBCA6;
+        background: rgba(227, 175, 188, 0.65);
         height: 100%;
     }
     .header{
@@ -28,9 +28,6 @@
       width: 100%;
 
     }
-    body{
-        background-color: #CAB1A5;
-    }
     .header1{
         align-items: center;
         display:flex;
@@ -39,7 +36,11 @@
     a{
       text-decoration: none;
     }
-
+    h2{
+      bottom: 50px;
+      right: 200px;
+      position: absolute;
+    }
     .mainarea1{
         display: flex;
         flex-wrap: wrap;
@@ -170,6 +171,7 @@
     }
     .Option2{
       margin-left: 5%;
+      text-align: center;
     }
 
     .Option1{
@@ -223,10 +225,10 @@
       /* overflow: hidden; */
     }
     .footer{
-      background: #8E8D8A;
+      background: #575459;
       width: 100%;
       height: 10vh;
-      position: fixed;
+      /* position: fixed; */
       bottom:0;
       display: flex;
       align-items: center;
@@ -266,19 +268,20 @@
       </div>
       <div class="Info-2">
         <div class="tile1">
-            <div class="icon">
-                <a href="">
-                  <img class="image2" src="pathology/Logout-removebg-preview.png">
-                </a>
-            </div>
+          <div class="icon">
+            <h2>{{ $data -> {'Name'} }}</h2>
+            <a href="logout">
+              <img class="image2" src="pathology/Logout-removebg-preview.png">
+            </a>
+          </div>
         </div>
       </div>
     </div>
 	<div class="mainarea1">
  		<div class="Info-3">
     	<div class="tile" style="width: 70%; ">
-      	<div class="icon" style="width: 262px; height: 245px; background: #DBDBDB;">
-      		<a href="">
+      	<div class="icon" style="width: 262px; height: 245px; background: #DBDBDB; text-align: center;">
+      		<a href="patient_profile">
       			<img class="image" src="pathology/view-profile1.png" style="width: 150px; height: 146px; margin: 5%; ">
       			<div class="Option1">
       				<h5>View Profile</h5>
@@ -289,11 +292,11 @@
 		</div>
 		<div class="Info-4">
   		<div class="tile2">
-    			<div class="icon" style="width: 261px; height: 246px; background: #DBDBDB;" >
-          		<a href="">
+    			<div class="icon" style="width: 261px; height: 246px; background: #DBDBDB; text-align: center;" >
+          		<a href="book_appointment">
           			<img class="image" src="pathology/appointment.png" style="width: 214px; height: 175px; margin: 5%; ">
             		<div class="Option2">
-                	<h5>View Appointment</h5>
+                	<h5>Book Appointment</h5>
             		</div>
           		</a>
       		</div>
@@ -301,11 +304,11 @@
 		</div>
     <div class="Info-5">
       <div class="tile2">
-          <div class="icon" style="width: 262px; height: 245px; background: #DBDBDB; " >
-              <a href="">
+          <div class="icon" style="width: 262px; height: 245px; background: #DBDBDB; text-align: center;" >
+              <a href="book_test">
                 <img class="image" src="pathology/Pathology.jpg" style="width: 218px; height: 173px; margin: 5%; ">
                 <div class="Option2">
-                    <h5>View Appointment</h5>
+                    <h5>Book Pathology Test</h5>
                 </div>
               </a>
           </div>
@@ -313,11 +316,11 @@
     </div>
     <div class="Info-6">
       <div class="tile2">
-          <div class="icon" style="width: 261px; height: 230px; background: #DBDBDB; " >
-              <a href="">
+          <div class="icon" style="width: 261px; height: 230px; background: #DBDBDB; text-align: center;" >
+              <a href="view_report">
                 <img class="image" src="pathology/view_report1.png" style="width: 150px; height: 145px; margin: 5%;">
                 <div class="Option2">
-                    <h5>View Appointment</h5>
+                    <h5>View Report</h5>
                 </div>
               </a>
           </div>
