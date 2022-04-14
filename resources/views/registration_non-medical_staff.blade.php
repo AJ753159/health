@@ -148,7 +148,11 @@
     <title>Registration</title>
 </head>
 <body>
-
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
     {{-- @include('flash') --}}
     <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="/register" enctype="multipart/form-data">
         @csrf
@@ -230,7 +234,7 @@
     <div class="footer">
         <p>All Rights Reserved.</p>
     </div>
-
+    
         
 
 </body>

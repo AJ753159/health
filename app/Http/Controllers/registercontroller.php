@@ -175,6 +175,7 @@ class registercontroller extends Controller
         $attributes = request()->validate([
             'date_visited' => 'required',
             'prescription' => 'required',
+            'medicine'  => 'required',
         ]);  
 
         DB::table('bookings')->where('appointment_id', $request->appointment_id)->update(['date_visited' => $attributes['date_visited'],'prescription' => $attributes['prescription']]);
@@ -375,8 +376,6 @@ class registercontroller extends Controller
             'Employee_name' => 'required',
             'Gender' => 'required',
             'Address' => 'required',
-
-            
         ]);
         if ($image = $request->file('profileImage')) {
             $destinationPath = 'image/';
@@ -386,7 +385,10 @@ class registercontroller extends Controller
         }
 
         DB::table('staffs')->where('Employee_ID', $request->Employee_ID)->update(['Email_id' => $attributes['Email_id'],'Mobile_No' => $attributes['Mobile_No'],'profileImage' => $attributes['profileImage'],'qualifications' => $attributes['qualifications'],'Employee_name' => $attributes['Employee_name'],'Gender' => $attributes['Gender'],'Address' => $attributes['Address']]);
-        return redirect("/update_profile/$Employee_ID")->with('status', 'Report Has Been uploaded');
+        if($attributes['emp_role'] = 'doctor'){
+            DB::table('doctors')->where('Employee_ID', $request->Employee_ID)->update(['Email_id' => $attributes['Email_id'],'Mobile_No' => $attributes['Mobile_No'],'profileImage' => $attributes['profileImage'],'doctor_name' => $attributes['Employee_name'],'Gender' => $attributes['Gender'],'Address' => $attributes['Address'], 'department' => 'OPD']);
+        }
+        return redirect("/update_profile/$Employee_ID")->with('info', 'Report Has Been uploaded');
         // echo "Record updated successfully.<br/>";
     }
     public function update_profile(Request $request ,$Employee_ID)

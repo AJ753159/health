@@ -80,11 +80,12 @@
     <title>Admin Profile</title>
 </head>
 <body>
-    @if(session('status'))
+    {{-- @if(session('status'))
     <div class="alert alert-success">
         {{ session('status') }}
     </div>
-    @endif
+    @endif --}}
+    @include('flash')
     {{-- @if ($data->{'emp_role'} == 'admin') --}}
     <form action="/edit_profile/{{ $data->Employee_ID }}" method="post" enctype="multipart/form-data">
         @csrf
