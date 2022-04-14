@@ -67,6 +67,10 @@
 		  	-webkit-animation: animatezoom 0.8s;
 		  	animation: animatezoom 0.5s
 		  }
+		  .danger{
+			  /* background: white; */
+			  color: #CC0000
+		  }
 		  @-webkit-keyframes animatezoom {
 		  	from {-webkit-transform: scale(0)}
 		  	to {-webkit-transform: scale(1)}
@@ -84,27 +88,24 @@
 		  }
 </style>
 </head>
+@include('flash')
 <body onload="document.getElementById('id01').style.display='block'" style="width:auto;">
-	<div id="id01" class="modal">
-		@if(Session::has('success'))
-			<div>
-				<h4>{{Session::get('success') }}</h4>
-			</div>
-		@endif
-		@if(Session::has('fail'))
-			<div>
-				<h4>{{Session::get('fail') }}</h4>
-			</div>
-		@endif
+	
 		<form class="modal-content animate" name="Login" action="/verify" method="POST" onsubmit="return(validate())">
 			@csrf
 			<h3>Login<br>Enter login credential</h3>
 			<div class="container">
 				<!-- <label for="aadhar no"><b>Aadhar number</b></label> -->
-				<input type="number" placeholder="Enter your employee id." name="Employee_ID" required><br><br>
+				<input type="number" placeholder="Enter Your Employee ID" name="Employee_ID">
+				@if ($errors->has('Employee_ID'))
+                    <span class="danger">{{ $errors->first('Employee_ID') }}</span>
+                @endif
 				<!-- <label for="passwd"><b>Mobile number</b></label> -->
-				<input type="password" placeholder="Enter your password" name="Mobile_No" required><br><br>
-				<button type="submit">Submit</button>
+				<br><br><input type="password" placeholder="Enter Your Password" name="password" required>
+				@if ($errors->has('password'))
+                    <span class="danger">{{ $errors->first('password') }}</span>
+                @endif
+				<br><br><button type="submit">Submit</button>
 			</div>
 		</form>
 	</div>

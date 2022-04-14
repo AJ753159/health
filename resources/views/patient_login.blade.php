@@ -13,7 +13,7 @@
 		background: #239CB7;
 
 	}
-		input[type=number], input[type=number] {
+		input[type=number], input[type=password] {
 			width: 100%;
 		  	padding: 12px 20px;
 		  	margin: 8px 0;
@@ -51,8 +51,8 @@
 		  	height: 100%;
 		  	overflow: auto;
 		  	color: purple;
-		  	background-color: rgb(0,0,0);
-		  	background-color: rgba(0,0,0,0.4);
+		  	/* background-color: rgb(0,0,0);
+		  	background-color: rgba(0,0,0,0.4); */
 		  	padding-top: 60px;
 		  }
 		  .modal-content {
@@ -81,29 +81,31 @@
 			  font-family: sans-serif;
 			  font-size: 20px;
 		  }
+		  .danger{
+			  /* background: white; */
+			  color: #CC0000
+		  }
 </style>
 </head>
+@include('flash')
 <body onload="document.getElementById('id01').style.display='block'" style="width:auto;">
 
 	<div id="id01" class="modal">
-		@if(Session::has('success'))
-			<div>
-				<h4>{{Session::get('success') }}</h4>
-			</div>
-		@endif
-		@if(Session::has('fail'))
-			<div>
-				<h4>{{Session::get('fail') }}</h4>
-			</div>
-		@endif
 		<form class="modal-content animate" name="Login" action="/check" method="post" onsubmit="return(validate())">
 			@csrf
 			<h3>Login<br>Enter login credential</h3>
 			<div class="container">
 				<!-- <label for="aadhar no"><b>Aadhar number</b></label> -->
-				<input type="number" placeholder="Enter your aadhar no." name="Aadharno" required><br><br>
+				<input type="number" placeholder="Enter Your Aadhar No." name="Aadharno">
+				@if ($errors->has('Aadharno'))
+                    <span class="danger">{{ $errors->first('Aadharno') }}</span>
+                @endif
 				<!-- <label for="passwd"><b>Mobile number</b></label> -->
-				<input type="number" placeholder="Enter your mobile no." name="mobileno" required><br><br>
+				<br><br><input type="password" placeholder="Enter Your Password" name="password" required>
+				@if ($errors->has('password'))
+                    <span class="danger">{{ $errors->first('password') }}</span>
+                @endif
+				<br><br>
 				<button type="submit">Submit</button>
 			</div>
 		</form>

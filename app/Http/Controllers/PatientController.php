@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use File;
+use Response;
 class PatientController extends Controller
 {
     // public function check(Request $request)
@@ -28,21 +31,24 @@ class PatientController extends Controller
      public function check(REQUEST $request)
     {
         $attributes = request()->validate([
-            'Aadharno' => 'required',
-            'mobileno' => 'required',
+            'Aadharno' => 'required|numeric',
+            'password' => 'required|numeric|digits:10',
+        ], [
+            'Aadharno.required' => 'Aadhar No is required',
+            'password.required' => 'Password is required'
         ]);
         $user = User::where('Aadharno','=',$request->Aadharno)->first();
         if($user){
-            if($user->mobileno == $request->mobileno){
+            if($user->mobileno == $request->password){
                 $request->session()->put('loginId', $user->Name);
-                return redirect('/Patient');
+                return redirect('/Patient')->with('success','Login Successfully');
             }
             else{
-                return back()->with('fail','mobileno. doesnot maches');
+                return back()->with('fail','Incorrect Password');
             }
         }
         else{
-            return back()->with('fail','this user is not registered');
+            return back()->with('fail','Incorrect Aadhar No.');
         }
     }
     public function patient()
@@ -51,6 +57,7 @@ class PatientController extends Controller
         if(Session()->has('loginId')){
             $data = User::where('Name','=', Session()->get('loginId'))->first();
         }
+        
         return view('Patient', compact('data'));
     }
     public function patient_profile()
@@ -59,7 +66,8 @@ class PatientController extends Controller
         if(Session()->has('loginId')){
             $data = User::where('Name','=', Session()->get('loginId'))->first();
         }
-        return view('patient_profile', compact('data'));
+        $users = DB::table('bookings')->select('*')->where('Aadharno' ,$data->Aadharno)->get();
+        return view('patient_profile', compact('data','users'));
     }
     public function index()
     {
@@ -166,5 +174,12 @@ class PatientController extends Controller
         DB::insert('insert into booktests(appointment_id, test_id, report_name, time, date, Aadharno, doctor_id) values (?, ?, ?, ?, ?, ?, ?)', [$attributes['appointment_id'],$attributes['test_id'], $user2->test_name, $attributes['time'], $attributes['date'],$data->Aadharno, $user1->doctor_id]);
 
         return redirect('/book_test')->with('status', 'Appointment has been created');
+    }
+    public function downloadFile($file_name){
+        // $file = Storage::disk('public')->get($file_name);
+        $filepath = public_path("report\\$file_name" );
+        return Response::download($filepath); 
+        // return (new Response($file_name, 200))
+        //       ->header('Content-Type', 'file/pdf');
     }
 }

@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+        $( "#datepicker" ).datepicker({ maxDate: "+0    ", dateFormat: 'yy-mm-dd',changeMonth: true,
+      changeYear: true });
+        
+    } );
+    </script>
     <style type="text/css">
     *{
         padding: 0;
@@ -13,21 +24,16 @@
         background-color: #5CDB9566;
         /* justify-content: center; */
         /* padding: 140px */
-        margin-top: 50px;
+        /* margin-top: 50px; */
         text-align: center;
-
-
-
     }
-
     .name{
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 10px;
         justify-content: center;
     }
     .name input[type=text]{
-
 			width: 70%;
 		  	padding: 12px 20px;
 		  	margin: 8px 0;
@@ -39,7 +45,7 @@
     .address{
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 10px;
         justify-content: center;
     }
     .address input[type=text]{
@@ -53,9 +59,9 @@
     }
 
     .mobile{
-        display: flex;
-        flex-wrap: wrap;
-        padding: 20px;
+        /* display: flex; */
+        /* flex-wrap: wrap; */
+        padding: 10px;
         justify-content: center;
     }
     .mobile input[type=number]{
@@ -79,7 +85,7 @@
     .aadhar{
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 10px;
         justify-content: center;
     }
     .aadhar input[type=number]{
@@ -93,8 +99,8 @@
         }
     .photo{
         display: flex;
-        flex-wrap: wrap;
-        padding: 20px;
+        /* flex-wrap: wrap; */
+        /* padding: 20px; */
         padding-left: 70px;
         justify-content: center;
     }
@@ -102,8 +108,9 @@
         font-family: sans-serif;
         font-size: 20px;
     }
+    .photo input[type=file]{
 
-
+    }
     button {
         background: #A8ADD9;
         color: white;
@@ -132,45 +139,91 @@
       color: white;
 
     }
+    .danger{
+        /* background: white; */
+        padding: 12px 20px;
+        color: #CC0000
+    }
     </style>
     <title>Registration</title>
 </head>
 <body>
 
-    @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif
+    {{-- @include('flash') --}}
     <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="/register" enctype="multipart/form-data">
         @csrf
         <div class="name">
-            <input type="text" id="name" placeholder="Enter your name" name="Name" required>
-
+            <input type="text" id="name" placeholder="Enter your Name" name="Name" >
+            @if ($errors->has('Name'))
+                <span class="danger">{{ $errors->first('Name') }}</span>
+            @endif
         </div>
         <div class="address">
-            <input type="text" id="address" placeholder="Enter your address" name="Address" required>
+            <input type="text" id="address" placeholder="Enter your Address" name="Address" >
+            @if ($errors->has('Address'))
+                <span class="danger">{{ $errors->first('Address') }}</span>
+            @endif
         </div>
         <div class="mobile">
-            <input type="number" id="mobile no." placeholder="Enter your mobile no." name="mobileno" required>
-            <input type="text" id="gender" placeholder="gender" name="gender" required>
+            <input type="number" id="mobile no." placeholder="Enter your Mobile Number" name="mobileno" >
+            @if ($errors->has('mobileno'))
+                <span class="danger">{{ $errors->first('mobileno') }}</span>
+            @endif
+            <input type="text" id="gender" placeholder="Enter your Gender" name="gender" >
+            @if ($errors->has('gender'))
+                <span class="danger">{{ $errors->first('gender') }}</span>
+            @endif
         </div>
+        <div class="mobile">
+            <input type="number" id="mobile no." placeholder="Enter your Height" name="height" >
+            @if ($errors->has('height'))
+                <span class="danger">{{ $errors->first('height') }}</span>
+            @endif
+            <input type="number" id="gender" placeholder="Enter your Weight" name="weight" >
+            @if ($errors->has('weight'))
+                <span class="danger">{{ $errors->first('weight') }}</span>
+            @endif
+        </div>
+        <div class="mobile">
+            <input type="number" id="mobile no." placeholder="Enter your BMI" name="BMI" >
+            @if ($errors->has('BMI'))
+                <span class="danger">{{ $errors->first('BMI') }}</span>
+            @endif
+            <input type="text" id="datepicker" placeholder="Enter your Date of Birth" name="DOB" >
+            @if ($errors->has('DOB'))
+                <span class="danger">{{ $errors->first('DOB') }}</span>
+            @endif
+        </div>
+        <div class="mobile">
+            <input type="text" id="mobile no." placeholder="Enter your Email Address" name="email" >
+            @if ($errors->has('email'))
+                <span class="danger">{{ $errors->first('email') }}</span>
+            @endif
+            <input type="text" id="gender" placeholder="Enter your Blood Group" name="blood_group" >
+            @if ($errors->has('blood_group'))
+                <span class="danger">{{ $errors->first('blood_group') }}</span>
+            @endif
+        </div>  
 
         <div class="aadhar">
-            <input type="number" id="aadhar no." placeholder="Enter your aadhar no." name="Aadharno" required>
+            <input type="number" id="aadhar no." placeholder="Enter your Aadhar Number" name="Aadharno" >
+            @if ($errors->has('Aadharno'))
+                <span class="danger">{{ $errors->first('Aadharno') }}</span>
+            @endif
         </div>
         <div class="photo">
-            <label for="myfile">Select photo : </label>
-            <input type="file" id="image" name="image" required>
-            @error('image')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-            @enderror
+            <label for="myfile">Select Photo : </label>
+            <input type="file" id="image" name="image" >
+            @if ($errors->has('image'))
+                <span class="danger">{{ $errors->first('image') }}</span>
+            @endif
 
-            <label for="myfile">Select a aadhar image : </label>
-            <input type="file" id="Aadharimg" name="Aadharimg" required>
-            @error('Aadharimg')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-            @enderror
+            <br><br>
+            <label for="myfile">Select Aadhar Card Image : </label>
+            <input type="file" id="Aadharimg" name="Aadharimg">
+            @if ($errors->has('Aadharimg'))
+                <span class="danger">{{ $errors->first('Aadharimg') }}</span>
+            @endif
         </div>
         <button type="submit">Submit</button>
     </form>

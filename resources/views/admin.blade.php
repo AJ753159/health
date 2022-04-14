@@ -261,9 +261,9 @@
       <div class="Info-2">
         <div class="tile1">
             <div class="icon">
-                <a href="">
-                  <img class="image2" src="pathology/Logout-removebg-preview.png">
-                </a>
+              <a href="logout">
+                <img class="image2" src="pathology/Logout-removebg-preview.png">
+              </a>
             </div>
         </div>
       </div>
@@ -291,7 +291,7 @@
     		<div class="Info-4">
       		<div class="tile">
         			<div class="icon" style="width: 270px; height: 246px; background: #DBDBDB;" >
-              		<a href="">
+              		<a href="generate_login">
               			<img class="image" src="pathology/generate_login1.png" style="width: 243px; height: 192px;margin: 5%; background: linear-gradient(0deg, rgba(255, 31, 165, 0.2), rgba(255, 31, 165, 0.2));">
   	            		<div class="Option2">
   	                		<h5>View Appointment</h5>
@@ -306,7 +306,7 @@
                   <a href="view-update_profile">
                     <img class="image" src="pathology/edit_profile1.png" style="width: 243px; height: 192px; margin: 5%; background: linear-gradient(0deg, rgba(46, 67, 253, 0.2), rgba(46, 67, 253, 0.2));">
                     <div class="Option2">
-                        <h5>View Appointment</h5>
+                        <h5>View/update Profile</h5>
                     </div>
                   </a>
               </div>

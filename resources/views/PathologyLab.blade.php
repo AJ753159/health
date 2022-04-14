@@ -258,7 +258,7 @@
           <div class="tile1">
               <div class="icon">
                 <h2>{{ $data->{'Employee_name'} }}</h2>
-                <a href="">
+                <a href="logout">
                   <img class="image2" src="pathology/Logout-removebg-preview.png">
                 </a>
               </div>

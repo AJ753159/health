@@ -13,9 +13,8 @@
         background: rgba(131, 103, 123, 0.4);
         /* justify-content: center; */
         /* padding: 140px */
-        margin-top: 50px;
+        /* margin-top: 50px; */
         text-align: center;
-
 
 
     }
@@ -23,23 +22,22 @@
     .name{
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 10px;
         justify-content: center;
     }
     .name input[type=number]{
-
-			width: 70%;
-		  	padding: 12px 20px;
-		  	margin: 8px 0;
-		  	display: inline-block;
-		  	border: 1px solid #ccc;
-		  	box-sizing: border-box;
-			/* border-radius: 30px; */
+        width: 70%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        /* border-radius: 30px; */
     }
     .address{
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 10px;
         justify-content: center;
     }
     .address input[type=text]{
@@ -55,13 +53,13 @@
     .mobile{
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 10px;
         justify-content: center;
     }
     .mobile input[type=number]{
         width: 35%;
         padding: 12px 20px;
-        margin: 8px 10px;
+        /* margin: 8px 10px; */
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
@@ -70,7 +68,7 @@
     .mobile input[type=text]{
         width: 35%;
         padding: 12px 20px;
-        margin: 8px 10px;
+        /* margin: 8px 10px; */
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
@@ -79,7 +77,7 @@
     .aadhar{
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 10px;
         justify-content: center;
     }
     .aadhar input[type=number]{
@@ -109,7 +107,7 @@
         /* width: 70%; */
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 10px;
         justify-content: center;
     }
     select{
@@ -149,37 +147,58 @@
       color: white;
 
     }
+    .danger{
+			  /* background: white; */
+			  color: #CC0000
+		  }
     </style>
     <title>Registration</title>
 </head>
 <body>
 
-    @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif
+    @include('flash')
     <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="/newstaff" enctype="multipart/form-data">
         @csrf
         <div class="name">
-            <input type="number" id="name" placeholder="Enter Employee Id" name="Employee_ID" required>
+            <input type="number" id="name" placeholder="Enter Employee Id" name="Employee_ID">
+        </div>
+        @if ($errors->has('Employee_ID'))
+            <span class="danger">{{ $errors->first('Employee_ID') }}</span>
+        @endif
 
-        </div>
         <div class="address">
-            <input type="text" id="address" placeholder="Enter Email Address of Employee" name="Email_id" required>
+            <input type="text" id="name" placeholder="Enter Name of Employee" name="Employee_name">
         </div>
+        @if ($errors->has('Employee_name'))
+            <span class="danger">{{ $errors->first('Employee_name') }}</span>
+        @endif
+
+        <div class="address">
+            <input type="text" id="address" placeholder="Enter Email Address of Employee" name="Email_id">
+        </div>
+        @if ($errors->has('Email_id'))
+            <span class="danger">{{ $errors->first('Email_id') }}</span>
+        @endif
 
         <div class="aadhar">
-            <input type="number" id="aadhar no." placeholder="Enter Password" name="Mobile_No" required>
+            <input type="number" id="aadhar no." placeholder="Enter Mobile No" name="Mobile_No">
         </div>
+        @if ($errors->has('Mobile_No'))
+            <span class="danger">{{ $errors->first('Mobile_No') }}</span>
+        @endif
+
         <div class="select_role">
-            <select name="emp_role" required>
+            <select name="emp_role">
                 <option value="">Select role</option>
                 <option value="doctor">Doctor</option>
                 <option value="nonmedical">Non Medical</option>
                 <option value="pathology">Pathology</option>
             </select>
         </div>
+        @if ($errors->has('emp_role'))
+            <span class="danger">{{ $errors->first('emp_role') }}</span>
+        @endif
+        <br><br>
         
         <button type="submit">Generate Login</button>
     </form>

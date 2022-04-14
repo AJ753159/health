@@ -3,6 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Non-Medical Staff</title>
+  
 	<!-- <link href="mainT.css" rel="stylesheet" type="text/css" /> -->
   <style type="text/css">
     *{
@@ -231,6 +232,7 @@
       right: 200px;
       position: absolute;
     }
+    
 
     @media screen and (max-width:500px){
       .image1{
@@ -246,11 +248,12 @@
 
 
   </style>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap" rel="stylesheet"> -->
 </head>
 <body>
+  @include('flash')
   {{-- <div class="container"> --}}
     <div class="header">
+    
       <div class="Info-1">
         <div class="tile1">
             <div class="icon">
@@ -265,7 +268,7 @@
             <div class="icon">
             {{-- <h2> hello,{{session('Employee_name')}} </h2>  --}}
             <h2>{{ $data -> {'Employee_name'} }}</h2>
-            <a href="">
+            <a href="logout">
               <img class="image2" src="pathology/Logout-removebg-preview.png">
             </a>
             </div>
@@ -303,22 +306,12 @@
           		</div>
       		</div>
     		</div>
-        <div class="Info-4">
-          <div class="tile">
-              <div class="icon" style="width: 270px; height: 246px; background: #DBDBDB;" >
-                  <a href="view-update_profile">
-                    <img class="image" src="pathology/doctor_patient.jpg" style="width: 243px; height: 192px; padding: 5%;">
-                    <div class="Option2">
-                        <h5>View Patient Doctor Profile</h5>
-                    </div>
-                  </a>
-              </div>
-          </div>
-        </div>
     </div>    
   {{-- </div> --}}
   <div class="footer">
     <p>© Copyright KALKI:2020.<br>All Rights Reserved.<br></p>
   </div>
+
+  
 </body>
 </html>

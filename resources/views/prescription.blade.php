@@ -10,14 +10,15 @@
         margin: 0;
     }
     body{
-        background: rgba(227, 175, 188, 0.65);
+        margin-top: 10px;
+        background-color: #CAB1A5;
         width: 100%;
     }
     .profile_img{
         padding-top: 20px;
         display: flex;
         flex-wrap: wrap;
-        width: 100%;
+        /* width: 100%; */
         justify-content: center;
 
     }
@@ -35,7 +36,7 @@
         
     }
     tr{
-        background: #E3AFBC;
+        background: #DEC7BC;
         
     }
     td{
@@ -47,12 +48,12 @@
         background: #E3AFBC;
         /* border: 5px solid #e8bfcaa6 ; */
         /* border-collapse: collapse; */
-        /* } */ 
+        /*}  */
     .footer{
         background: #575459;
         width: 100%;
-        height: 90px;
-        position: fixed;
+        height: 50px;
+        /* position: fixed; */
         bottom:0;
         display: flex;
         align-items: center;
@@ -61,14 +62,34 @@
     .footer p{
         color: white;
     }
+    button {
+        background: #A8ADD9;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border:none;
+        cursor: pointer;
+        /* width: 30%; */
+        position: relative;
+        border-radius: 50px;
+    }
+    button:hover {
+        opacity: 0.8;
+    }
     </style>
-    <title>patient_profile</title>
+    <title>Admin Profile</title>
 </head>
 <body>
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
+    {{-- @if ($data->{'emp_role'} == 'admin') --}}
     <div class="profile_img">
         {{-- <img src="pathology/patient.png" style="width:150px; height:150px; "> --}}
         {{-- {{ $data -> {'image'} }} --}}
-        <img src= "image/{{ $data -> {'image'} }}" style="width: 206px;height: 203px;" />
+        <img src= "/image/{{ $data -> {'image'} }}" style="width: 206px;height: 203px;" />
     </div>
     <div class="table">
       <table>
@@ -97,20 +118,48 @@
             <td><b>BMI: </b>{{ $data -> {'BMI'} }}</td>
         </tr>
       </table>
+      
     </div>
     <div class="table">
-      <table>
+    <table>
+        <tr style="background: rgba(251, 201, 177, 0.9);">
+            {{-- <th>Department</th> --}}
+            <th>Date <br> visited</th>
+            <th>Prescribtion</th>
+            <th>Report</th>
+        </tr>
+        {{-- $mi = new MultipleIterator();
+        $mi->attachIterator(new ArrayIterator($array1));
+        $mi->attachIterator(new ArrayIterator($array2));
+        foreach($mi as list($array1data, $array2data)) {
+            var_dump($array1data,$array2data);
+        } --}}
+        {{-- @foreach(array_merge($reports, $users) as $item)
+        <tr>
+            <td style="text-align: center">{{ $item-> {'date_visited'} }}</a></td>
+            <td>{{ $item-> {'prescription'} }}</td>
+            <td>{{ $item->{'report_name'} }}</td>
+        </tr>
+        @endforeach --}}
         @foreach ($users as $user)
         <tr>
-           <td>Appointment ID :-{{ $user->{'appointment_id'} }} <br> {{ $user->{'prescription'} }}</td>
-           {{-- <td><button onclick="window.location.href = '/downloadFile/{{ $user->report }}';">Download Report</button></td> --}}
-         </tr>
+            {{-- <td>{{ $user-> {'department'} }}</td> --}}
+            <td style="text-align: center">{{ $user-> {'date_visited'} }}</td>
+            <td>{{ $user-> {'prescription'} }}</td>
+            <td><button onclick="window.location.href = '/report/{{ $user-> {'appointment_id'} }}';">Download Report</button></td>
+            
+            {{-- <td><img src= "report/{{ $user ->{'report'} }}" style="width: 206px;height: 203px;" /></td> --}}
+        </tr>
         @endforeach
-        
-      </table>
+        <tr style="background: none; text-align: center">
+            <td colspan="3"><button type="button" onclick="window.location.href = '/add_prescription/{{ $items->appointment_id }}';"> Add Prescription</button></td>
+        </tr>
+    </table>
     </div>
+    {{-- @endif --}}
     <div class="footer">
         <p>All Rights Reserved.</p>
     </div>
+
 </body>
 </html>

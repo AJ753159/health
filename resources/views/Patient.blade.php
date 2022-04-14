@@ -255,6 +255,7 @@
   <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap" rel="stylesheet"> -->
 </head>
 <body>
+  @include('flash')
   <!-- <div class="container"> -->
     <div class="header">
       <div class="Info-1">

@@ -64,6 +64,14 @@
         align-items: center;
         justify-content: center;
     }
+    a:link, a:visited {
+  /* background-color: #f44336; */
+  color: black;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
     .footer p{
         color: white;
 
@@ -85,7 +93,8 @@
             <td>{{ $user->{'id'} }}</td>
             <td>{{ $user->{'date'} }}</td>
             <td>{{ $user->{'report_name'} }}</td>
-            <td><button>View Document </button>{{ $user ->{'report'} }}</td>
+            <td><button onclick="window.location.href = '/downloadFile/{{ $user->report }}';">Download Report</button></td>
+            
             {{-- <td><img src= "report/{{ $user ->{'report'} }}" style="width: 206px;height: 203px;" /></td> --}}
          </tr>
          @endforeach

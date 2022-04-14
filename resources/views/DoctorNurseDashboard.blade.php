@@ -253,7 +253,7 @@
       <div class="Info-2">
         <div class="tile1">
             <div class="icon">
-                <a href="">
+            <a href="logout">
                   <img class="image2" src="pathology/Logout-removebg-preview.png">
                 </a>
             </div>
@@ -276,7 +276,7 @@
     		<div class="Info-4">
       		<div class="tile">
         			<div class="icon" style="width: 270px; height: 246px; background: #DBDBDB;" >
-              		<a href="">
+              		<a href="view_appointment">
               			<img src="pathology/view_appointment.jpg" style="width: 243px; height: 192px; padding: 5%;">
   	            		<div class="Option2">
   	                		<h5>View Appointment</h5>

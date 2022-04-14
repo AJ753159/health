@@ -11,7 +11,7 @@
     }
     body{
         margin-top: 10px;
-        background: #CAB1A5;
+        background: rgba(131, 103, 123, 0.4);
         width: 100%;
     }
     .profile_img{
@@ -36,7 +36,7 @@
         
     }
     tr{
-        background: #DEC7BC;
+        background: rgba(131, 103, 123, 0.4);
         
     }
     td{
@@ -62,39 +62,56 @@
     .footer p{
         color: white;
     }
+    button {
+        background: #A8ADD9;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border:none;
+        cursor: pointer;
+        width: 30%;
+        position: relative;
+        border-radius: 50px;
+    }
+    button:hover {
+        opacity: 0.8;
+    }
     </style>
-    <title>Doctor Profile</title>
+    <title>Admin Profile</title>
 </head>
 <body>
-    @if ($data->{'emp_role'} == 'doctor')
-    <div class="profile_img">
-        <img src= "image/{{ $data -> {'profileImage'} }}" style="width: 206px;height: 203px;" />
-    </div>
-    
-    <div class="table">
-        <table>
-          <tr>
-            <td><b>Name: </b>{{ $data -> {'Employee_name'} }}</td>
-            <td><b>Mobile No. </b> {{ $data -> {'Mobile_No'} }}</td>
-          </tr>
-          <tr>
-            <td><b>Qualification: </b> {{ $data -> {'qualifications'} }}</td>
-            <td><b>Gender: </b>{{ $data -> {'Gender'} }}</td>
-          </tr>
-          <tr>
-            <td><b>Email: </b>{{ $data -> {'Email_id'} }}</td>
-          </tr>
-          <tr>
-            <td colspan="3"><b>Address: </b>{{ $data -> {'Address'} }}</td>
-          </tr>
-          {{-- <tr>
-            <td colspan="3"><b>Address: </b>{{ $data -> {'emp_role'} }}</td>
-          </tr> --}}
-          
-        </table>
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
     </div>
     @endif
-    
+    {{-- @if ($data->{'emp_role'} == 'admin') --}}
+    <div class="profile_img">
+        {{-- <img src="pathology/doctor_photo.jpg" style="width:206px; height:208px; "> --}}
+        <img src= "/image/{{ $data -> {'profileImage'} }}" style="width: 206px;height: 203px;" />
+    </div>
+    <div class="table">
+    <table>
+        <tr>
+        <td><b>Name: </b>{{ $data -> {'Employee_name'} }}</td>
+        <td><b>Mobile No. </b> {{ $data -> {'Mobile_No'} }}</td>
+        </tr>
+        <tr>
+        <td><b>Qualification: </b> {{ $data -> {'qualifications'} }}</td>
+        <td><b>Gender: </b>{{ $data -> {'Gender'} }}</td>
+        </tr>
+        <tr>
+        <td><b>Email: </b>{{ $data -> {'Email_id'} }}</td>
+        </tr>
+        <tr>
+            <td colspan="3"><b>Address: </b>{{ $data -> {'Address'} }}</td>
+        </tr>
+        <tr style="background: none; text-align:center;">
+            <td colspan="3"><button type="button" onclick="window.location.href = '/edit_profile/{{ $data->Employee_ID }}';">Update</button></td>
+        </tr>
+    </table>
+    </div>
+    {{-- @endif --}}
     <div class="footer">
         <p>All Rights Reserved.</p>
     </div>

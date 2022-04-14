@@ -68,39 +68,34 @@
         color: white;
 
     }
+    a:link, a:visited {
+  /* background-color: #f44336; */
+  color: black;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
     </style>
     <title>View Report</title>
 </head>
 <body>
     <div class="table">
       <table>
-          <tr>
+        <tr>
             <th>Sr No.</th>
             <th>Name of Patient</th>
-            
             <th>Time</th>
-    
-          </tr>
-        <tr>
-          <td>1</td>
-          <td>Sanjay Ahire</td>
-          <td>09:00</td>
         </tr>
+        @foreach ($users as $item)
         <tr>
-            <td>2</td>
-            <td>Manisha Kotak</td>
-            <td>10:30</td>
+            <td><a href="/prescription/{{ $item->id }}">{{ $item->{'Aadharno'} }}</a></td>
+            <td> {{ $item->{'u_name'} }}</td>
+            <td>{{ $item->{'time'} }}</td>
+        
+        {{-- <td><img src= "report/{{ $user ->{'report'} }}" style="width: 206px;height: 203px;" /></td> --}}
         </tr>
-        <tr>
-            <td>3</td>
-            <td>Prem Singh</td>
-            <td>11:00</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Sanika Patil</td>
-            <td>13:00</td>
-        </tr>
+        @endforeach
       </table>
     </div>
 

@@ -66,7 +66,7 @@
     <title>Admin Profile</title>
 </head>
 <body>
-    @if ($data->{'emp_role'} == 'admin')
+    {{-- @if ($data->{'emp_role'} == 'admin') --}}
     <div class="profile_img">
         {{-- <img src="pathology/doctor_photo.jpg" style="width:206px; height:208px; "> --}}
         <img src= "image/{{ $data -> {'profileImage'} }}" style="width: 206px;height: 203px;" />
@@ -78,7 +78,7 @@
         <td><b>Mobile No. </b> +{{ $data -> {'Mobile_No'} }}</td>
         </tr>
         <tr>
-        <td><b>Qualification</b> BDMS</td>
+        <td><b>Qualification</b>{{ $data -> {'qualifications'} }}</td>
         <td><b>Gender: </b>{{ $data -> {'Gender'} }}</td>
         </tr>
         <tr>
@@ -89,7 +89,7 @@
         </tr>
     </table>
     </div>
-    @endif
+    {{-- @endif --}}
     <div class="footer">
         <p>All Rights Reserved.</p>
     </div>
