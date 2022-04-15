@@ -12,6 +12,8 @@
     body{
         background: rgba(151, 202, 239, 0.5);
         width: 100%;
+        position: relative;
+        min-height: 100vh;
     }
     .profile_img{
         padding-top: 20px;
@@ -26,7 +28,7 @@
         flex-wrap: wrap;
         width:100%;
         justify-content: center;
-        /* padding: 20px; */
+        padding-bottom: 40px;
 
     }
     table{
@@ -72,11 +74,7 @@
     <title>View Test</title>
 </head>
 <body>
-    @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif
+    @include('flash')
     <div class="table">
       <table>
           <tr>
@@ -88,7 +86,7 @@
 
         @foreach ($users as $user)
          <tr>
-            <form action="/upload/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/upload/{{ $user->id }}/{{ $data->Employee_ID }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <td>{{ $user->{'u_name'} }}</td>
                 <td>{{ $user->{'report_name'} }}</td>
@@ -99,12 +97,11 @@
             </form>
          </tr>
          @endforeach
+         {{-- <td><button>Choose File</button></td> --}}
       </table>
     </div>
 
-    <div class="footer">
-        <p>All Rights Reserved!</p>
-    </div>
+    @include('footer')
 
 
 </body>

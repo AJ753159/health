@@ -22,9 +22,6 @@
     }
     body{
         background-color: #5CDB9566;
-        /* justify-content: center; */
-        /* padding: 140px */
-        /* margin-top: 50px; */
         text-align: center;
     }
     .name{
@@ -99,17 +96,12 @@
         }
     .photo{
         display: flex;
-        /* flex-wrap: wrap; */
-        /* padding: 20px; */
         padding-left: 70px;
         justify-content: center;
     }
     .photo label{
         font-family: sans-serif;
         font-size: 20px;
-    }
-    .photo input[type=file]{
-
     }
     button {
         background: #A8ADD9;
@@ -140,20 +132,21 @@
 
     }
     .danger{
-        /* background: white; */
         padding: 12px 20px;
         color: #CC0000
+    }
+    .image3{
+      width: 70px; 
+      height: 69px;
+      position: absolute; 
+      top: 30px; 
+      left: 10px;
+      padding: 1%;
     }
     </style>
     <title>Registration</title>
 </head>
 <body>
-    @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif
-    {{-- @include('flash') --}}
     <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="/register" enctype="multipart/form-data">
         @csrf
         <div class="name">
@@ -229,13 +222,8 @@
                 <span class="danger">{{ $errors->first('Aadharimg') }}</span>
             @endif
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit</button>     
     </form>
-    <div class="footer">
-        <p>All Rights Reserved.</p>
-    </div>
-    
-        
-
+    @include('footer')
 </body>
 </html>

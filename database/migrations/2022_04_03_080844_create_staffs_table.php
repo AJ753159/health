@@ -23,7 +23,6 @@ class CreateStaffsTable extends Migration
             $table->string('Address');
             $table->text('profileImage');
             $table->string('emp_role');
-            // $table->timestamps();
         });
     }
 

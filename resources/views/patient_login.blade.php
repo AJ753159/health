@@ -91,7 +91,7 @@
 <body onload="document.getElementById('id01').style.display='block'" style="width:auto;">
 
 	<div id="id01" class="modal">
-		<form class="modal-content animate" name="Login" action="/check" method="post" onsubmit="return(validate())">
+		<form class="modal-content animate" name="Login" action="/check" method="post" onsubmit="return(validate())" >
 			@csrf
 			<h3>Login<br>Enter login credential</h3>
 			<div class="container">
@@ -101,7 +101,7 @@
                     <span class="danger">{{ $errors->first('Aadharno') }}</span>
                 @endif
 				<!-- <label for="passwd"><b>Mobile number</b></label> -->
-				<br><br><input type="password" placeholder="Enter Your Password" name="password" required>
+				<br><br><input type="password" placeholder="Enter Your Password" name="password" autocomplete="nope">
 				@if ($errors->has('password'))
                     <span class="danger">{{ $errors->first('password') }}</span>
                 @endif

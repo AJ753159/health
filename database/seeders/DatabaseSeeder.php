@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use DB;
 // use Illuminate\Database\Eloquent\Model;
@@ -15,21 +16,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(1)->create();
         // User::create([
-        //     `Name`,
-        //     `Address`,
-        //     `mobileno`,
-        //     `gender`,
-        //     `Aadharno`,
-        //     `image`,
-        //     `Aadharimg`,
-        //     `height`,
-        //     `weight`,
-        //     `BMI`,
-        //     `email`,
-        //     `DOB`,
-        //     `blood_group`
+        //     `Name` => 'Anuj',
+        //     `Address` => 'Thakurli',
+        //     `mobileno` => '8080049729',
+        //     `gender` => 'Male',
+        //     `Aadharno` => '741741741741',
+        //     `image` => 'doctor_patient.jpg',
+        //     `Aadharimg` => 'doctor_patient.jpg',
+        //     `height` => '158',
+        //     `weight` => '65',
+        //     `BMI` => '23'
+        //     `email` => 'Anuj@gmail.com',
+        //     `DOB` => '2001-02-26',
+        //     `blood_group` => 'A'
         // ]);
 
         // Staff::create([

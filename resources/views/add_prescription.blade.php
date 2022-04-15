@@ -31,13 +31,11 @@
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
-        /* border-radius: 30px; */
     }
     .profile_img{
         padding-top: 20px;
         display: flex;
         flex-wrap: wrap;
-        /* width: 100%; */
         justify-content: center;
 
     }
@@ -46,13 +44,11 @@
         flex-wrap: wrap;
         width:100%;
         justify-content: center;
-        /* padding: 20px; */
-
+        padding-bottom: 20px;
     }
     table{
         border-spacing: 10px;
-        width:50%;
-        
+        width:50%;   
     }
     tr{
         background: #DEC7BC;
@@ -60,26 +56,6 @@
     }
     td{
         padding: 10px;
-    }
-    /* table, tr,td {
-        text-align: center;
-        
-        background: #E3AFBC;
-        /* border: 5px solid #e8bfcaa6 ; */
-        /* border-collapse: collapse; */
-        /*}  */
-    .footer{
-        background: #575459;
-        width: 100%;
-        height: 10vh;
-        position: fixed;
-        bottom:0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .footer p{
-        color: white;
     }
     button {
         background: #A8ADD9;
@@ -108,44 +84,27 @@
     <title>Admin Profile</title>
 </head>
 <body>
-    @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif
     <form action="/add_prescription/{{ $items->appointment_id }}" method="post" enctype="multipart/form-data">
     @csrf  
-    <div class="table">
-    <table>
-        <tr style="background: rgba(251, 201, 177, 0.9);">
-            {{-- <th>Department</th> --}}
-            <th>Date <br> visited</th>
-            <th>Prescribtion</th>
-            <th>Report</th>
-        </tr>
-
-        <tr>
-            {{-- <td>{{ $user-> {'department'} }}</td> --}}
-            <div class="date">
-                
-            </div>
-            <td style="text-align: center"><input type="text" id="datepicker" name="date_visited" value="{{ $items-> {'date_visited'} }}" /></td>
-            <td><textarea name="prescription" value="{{ $items-> {'prescription'} }} "></textarea></td>
-            <td>{{ $items->{'appointment_id'} }}</td>
-            
-            {{-- <td><img src= "report/{{ $user ->{'report'} }}" style="width: 206px;height: 203px;" /></td> --}}
-        </tr>
-
-        <tr style="background: none; text-align: center">
-            <td colspan="3"><button type="submit"> Upadate Prescription</button></td>
-        </tr>
-    </table>
-    </div>
+        <div class="table">
+            <table>
+                <tr style="background: rgba(251, 201, 177, 0.9);">
+                    <th>Date <br> visited</th>
+                    <th>Prescribtion</th>
+                    <th>Appointment ID</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><input type="text" id="datepicker" name="date_visited" value="{{ $items-> {'date_visited'} }}" /></td>
+                    <td><textarea name="prescription" value="{{ $items-> {'prescription'} }} "></textarea></td>
+                    <td>{{ $items->{'appointment_id'} }}</td>
+                </tr>
+                <tr style="background: none; text-align: center">
+                    <td colspan="3"><button type="submit"> Update Prescription</button></td>
+                </tr>
+            </table>
+        </div>
     </form>
-    {{-- @endif --}}
-    <div class="footer">
-        <p>All Rights Reserved.</p>
-    </div>
+    @include('footer')
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>

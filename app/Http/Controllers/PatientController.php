@@ -81,44 +81,23 @@ class PatientController extends Controller
         $users = DB::table('booktests')->select('*')->where('Aadharno' ,$data->Aadharno)->get();
         return view('view_report',compact('users'));
      }
-    // public function book_appointment()
-    // {
-    //     if(Session()->has('loginId')){
-    //         $data = User::where('Name','=', Session()->get('loginId'))->first();
-    //     }
 
-
-    //     // $data['department']=DB::table('doctors')->distinct()->select('department')->orderBy('department','asc')->get();
-    //     // // $items = DB::table('doctors')->select('*')->get();
-    //     // // $selectedID = 2;
-    //     return view('dropdown', compact('data'));
-    // }
     public function dropdown()
     {
         if(Session()->has('loginId')){
             $data = User::where('Name','=', Session()->get('loginId'))->first();
         }
-
-
         $user=DB::table('doctors')->distinct()->select('department')->orderBy('department','asc')->get();
-        // // $items = DB::table('doctors')->select('*')->get();
-        // // $selectedID = 2;
         return view('book_appointment', compact('data','user'));
         
     }
+
     public function getdoctor(Request $request)
     {
         if(Session()->has('loginId')){
             $data = User::where('Name','=', Session()->get('loginId'))->first();
         }
-
-
         $doc=DB::table('doctors')->select('doctor_name','doctor_id')->where('department' ,$request->department)->get();
-        // $items = DB::table('doctors')->select('*')->get();
-        // $selectedID = 2;
-        // return view('book_appointment', $data);
-
-        //$request->department 
         return response()->json($doc);
     }
 
@@ -134,10 +113,15 @@ class PatientController extends Controller
             'doctor_id' => 'required',
             'time' => 'required',
             'date' => 'required',
+        ], [
+            'department.required' => 'Department is required',
+            'doctor_id.required' => 'Doctor ID is required',
+            'time.required' => 'Appointment Time is required',
+            'date.required' => 'Appointment Date is required'
         ]);
         DB::insert('insert into bookings (appointment_id,department, doctor_id, time, date, Aadharno) values (?, ?, ?, ?, ?, ?)', [$appointment_id,$attributes['department'], $attributes['doctor_id'], $attributes['time'], $attributes['date'],$data->Aadharno]);
 
-        return redirect('/book_appointment')->with('status', 'Appoinment has been created');
+        return redirect('/Patient')->with('info', 'Appoinment has been created');
     }
     public function generateUniqueCode()
     {
@@ -170,16 +154,18 @@ class PatientController extends Controller
             'appointment_id' => 'required',
             'time' => 'required',
             'date' => 'required',
+        ], [
+            'test_id.required' => 'Test ID is required!!',
+            'appointment_id.required' => 'Appointment ID is required!!',
+            'time.required' => 'Appointment Time is required!!',
+            'date.required' => 'Appointment Date is required!!'
         ]);
         DB::insert('insert into booktests(appointment_id, test_id, report_name, time, date, Aadharno, doctor_id) values (?, ?, ?, ?, ?, ?, ?)', [$attributes['appointment_id'],$attributes['test_id'], $user2->test_name, $attributes['time'], $attributes['date'],$data->Aadharno, $user1->doctor_id]);
 
-        return redirect('/book_test')->with('status', 'Appointment has been created');
+        return redirect('/Patient')->with('info', 'Appointment has been created');
     }
     public function downloadFile($file_name){
-        // $file = Storage::disk('public')->get($file_name);
         $filepath = public_path("report\\$file_name" );
         return Response::download($filepath); 
-        // return (new Response($file_name, 200))
-        //       ->header('Content-Type', 'file/pdf');
     }
 }

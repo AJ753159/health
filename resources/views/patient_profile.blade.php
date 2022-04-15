@@ -12,6 +12,8 @@
     body{
         background: rgba(227, 175, 188, 0.65);
         width: 100%;
+        position: relative;
+        min-height: 100vh;
     }
     .profile_img{
         padding-top: 20px;
@@ -26,12 +28,17 @@
         flex-wrap: wrap;
         width:100%;
         justify-content: center;
-        /* padding: 20px; */
-
     }
     table{
         border-spacing: 10px;
         width:50%;
+        
+    }
+    .table1{
+        display: flex;
+        width:100%;
+        justify-content: center;
+        padding-bottom: 50px
         
     }
     tr{
@@ -41,33 +48,14 @@
     td{
         padding: 10px;
     }
-    /* table, tr,td {
-        text-align: center;
-        
-        background: #E3AFBC;
-        /* border: 5px solid #e8bfcaa6 ; */
-        /* border-collapse: collapse; */
-        /* } */ 
-    .footer{
-        background: #575459;
-        width: 100%;
-        height: 90px;
-        position: fixed;
-        bottom:0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .footer p{
-        color: white;
+    .container{
+        min-height: 100%;
     }
     </style>
     <title>patient_profile</title>
 </head>
 <body>
     <div class="profile_img">
-        {{-- <img src="pathology/patient.png" style="width:150px; height:150px; "> --}}
-        {{-- {{ $data -> {'image'} }} --}}
         <img src= "image/{{ $data -> {'image'} }}" style="width: 206px;height: 203px;" />
     </div>
     <div class="table">
@@ -98,19 +86,15 @@
         </tr>
       </table>
     </div>
-    <div class="table">
+    <div class="table1">
       <table>
         @foreach ($users as $user)
         <tr>
-           <td>Appointment ID :-{{ $user->{'appointment_id'} }} <br> {{ $user->{'prescription'} }}</td>
-           {{-- <td><button onclick="window.location.href = '/downloadFile/{{ $user->report }}';">Download Report</button></td> --}}
+           <td>Appointment ID :-{{ $user->{'appointment_id'} }} <br> {{ $user->{'prescription'} }} <br> </td>
          </tr>
         @endforeach
-        
       </table>
     </div>
-    <div class="footer">
-        <p>All Rights Reserved.</p>
-    </div>
+    @include('footer')
 </body>
 </html>

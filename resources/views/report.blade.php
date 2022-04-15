@@ -97,8 +97,6 @@
         @endforeach
     </table>
     </div>
-    <div class="footer">
-        <p>All Rights Reserved!</p>
-    </div>
+    <@include('footer')
 </body>
 </html>

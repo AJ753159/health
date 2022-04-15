@@ -3,126 +3,58 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pathology Lab</title>
-	<!-- <link href="mainT.css" rel="stylesheet" type="text/css" /> -->
   <style type="text/css">
-    
     *{ 
       padding: 0; 
       margin: 0 
-    }
-    html {
-      height: 100%;
-      overflow: hidden;
-      width: 100%;
-
     }
     body{
       background: rgba(151, 202, 239, 0.5);
     }
     .header{
-        /* align-items: center; */
-        display:flex;
-        /* flex-wrap: wrap; */
-        position: relative;
-        top: 0;
-        display: flex;
-        /* height: 25%; */
+      display:flex;
+      position: relative;
+      top: 0;
+      display: flex;
     }
     h2{
       bottom: 50px;
-      /* padding-right: 100px; */
       right: 200px;
       position: absolute;
     }
-    .header1{
-        align-items: center;
-        display:flex;
-        flex-wrap: wrap;
-    }
-    /* body{
-        background-color: #CAB1A5;
-    }
-    .header1{
-        align-items: center;
-        display:flex;
-        flex-wrap: wrap;
-    } */
     a{
       text-decoration: none;
     }
-
-    /* .mainarea1{
-        display: flex;
-        flex-wrap: wrap;
-        overflow-y:  scroll;
-        scroll-behavior: smooth;
-        padding: 10% auto 0 5%;
-        height: 60%;
-        width: 95%;
-        padding-left: 5%;
-        justify-content: space-around;
-       background-color: white;
-   
-
-         
-    } */
     .mainarea{
-        display: flex;
-        flex-wrap: wrap;
-        /* overflow-y:  scroll; */
-        scroll-behavior: smooth;
-        padding: 10% auto 0 5%;
-        height: 60%;
-        width: 95%;
-        padding-left: 5%;
-        justify-content: space-around;
-    /*    background-color: white;
-    */
-
-         
+      display: flex;
+      flex-wrap: wrap;
+      scroll-behavior: smooth;
+      padding: 10% auto 0 5%;
+      height: 60%;
+      width: 95%;
+      padding-left: 5%;
+      justify-content: space-around;
+    }
+    .tile1{
+      display: flex;
+      flex-direction: column; 
+      width: 100%;
     }
 
-    .tile1{
-        /* margin: 10% 15%; */
-        display: flex;
-        flex-direction: column; 
-        /* overflow: hidden; */
-        width: 100%;
-    /*    background-color: white;
-    *//*    border-radius: 50%;
-    */
-      }
-
-    .tile2{
-        margin: 10% 15%;
-        display: flex;
-        flex-direction: column; 
-        /* overflow: hidden; */
-        width: 85%;
-    /*    background-color: white;
-    *//*    border-radius: 50%;
-    */
-      }
-
-
     .tile{
-        margin: 10% 15%;
-        display: flex;
-        flex-direction: column; 
-        /* overflow: hidden; */
-        width: 100%;
-    /*    background-color: white;
-    *//*    border-radius: 50%;
-    */
-      }
+      margin: 10% 15%;
+      display: flex;
+      flex-direction: column; 
+      width: 80%;
+    }
     .icon a{
-      /* overflow: hidden; */
       color: black;
     }
 
     .image1{
       width: 320px; 
       height: 100px;
+      
     }
     .image2{
       width: 70px; 
@@ -133,39 +65,27 @@
     }
 
     .image{
-    /*  max-width: 100%;
-    */height: 50%;
+      height: 50%;
       width: 60%;
       flex-direction: column;
-    /*  border-radius: 50%;
-    *//*  filter: drop-shadow(0px 5px 20px rgba(0,0,0,0.65));
-    */
+
     }
 
 
-    .image:hover{
-      /* border-radius:50%; */
+    .image:hover{ 
       filter: drop-shadow( 0 0  .40rem rgba(0,0,0,0.55));
-     /*box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.65);*/
     }
 
 
-    .Option2,.Option4,.Option5,.Option6,.Option10{
-      /* margin-top: 1%; */
-      margin-left: 9%;
+    .Option2{
       width:95%;
       text-align: center; 
       flex-direction: column;
       font-size: 1.2rem;
     }
-    .Option2{
-      margin-left: 5%;
-    }
 
     .Option1{
-     /* margin-top: 2%; */
       width:95%;
-      /* margin-left: 20%; */
       font-size: 1.2rem;
       text-align: center; 
       flex-direction: column;
@@ -175,57 +95,24 @@
       flex: 1;
       flex-basis: 30%;
       margin-top: 3%;
-      /* overflow: hidden; */
 
     }
     .Info-2{
       flex: 1;
-        /* flex-basis: 30%; */
-        margin-top: 3%;
-      /* overflow: hidden; */
+      margin-top: 3%;
     }
 
     .Info-3{
       flex: 1;
       flex-basis: 30%;
       margin-top: 3%;
-      /* overflow: hidden; */
 
     }
     .Info-4{
       flex: 1;
         flex-basis: 30%;
         margin-top: 3%;
-      /* overflow: hidden; */
     }
-
-    .Info-5{
-      flex: 1;
-      flex-basis: 30%;
-      margin-top: 15%;
-      /* overflow: hidden; */
-    }
-    .Info-6{
-      /* flex: 1; */
-        flex-basis: 30%;
-        /* margin-top: 3%; */
-      /* overflow: hidden; */
-    }
-    .footer{
-      background: #8E8D8A;
-      width: 100%;
-      height: 10vh;
-      position: fixed;
-      bottom:0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .footer p{
-      color: white;
-
-    }
-
     @media screen and (max-width:500px){
       .image1{
         height: 100px;
@@ -233,17 +120,15 @@
       }
       .image2{
         width: 50px;
-        /* right: 0%; */
-        left: 100%;
+        left: 90%;
       }
     }   
 
   </style>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap" rel="stylesheet"> -->
 </head>
 <body>
-  {{-- <div class="container"> --}}
 
+  @include('flash')
       <div class="header">
         <div class="Info-1">
           <div class="tile1">
@@ -265,12 +150,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="header1"><img src="Logo.png" style="width: 320px; height: 100px;">
-        <div class="log">
-          <a href="logout.php"><img src="Logout.png" style="width: 70px; height: 69px; position: absolute; right: 10px; padding: 1%; "></a>
-        </div>
-      </div>
-    </div> -->
   	<div class="mainarea">
    		<div class="Info-3">
       		<div class="tile" style="width: 70%; ">
@@ -296,10 +175,7 @@
           		</div>
       		</div>
     		</div>
-    </div>    
-  {{-- </div> --}}
-  <div class="footer">
-    <p>All Rights Reserved!</p>
-  </div>
+    </div>
+  @include('footer')
 </body>
 </html>

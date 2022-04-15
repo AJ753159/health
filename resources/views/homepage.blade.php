@@ -13,6 +13,8 @@
 body{
     background: #6798FF4D;
     width: 100%;
+    position: relative;
+    min-height: 100vh;
 }
 .rect1{
     display: flex;
@@ -21,8 +23,8 @@ body{
     width: 100%;
 }
 .rect1 img{
-    height: 150px;
-    width:400px;
+    width: 320px; 
+    height: 100px;    
     padding-left: 40px;
 }
 .rect2{
@@ -87,7 +89,9 @@ body{
     padding-right: 120px;
     width: 200px;
 }
-
+/* .rect5 a:hover:after {
+  content: attr(title);
+} */
 .rect6{
     display: flex;
     flex-wrap: wrap;
@@ -163,6 +167,7 @@ body{
 }
 
 
+
     </style>
     <title>HealthCare</title>
 </head>
@@ -186,14 +191,14 @@ body{
         <p>Greetings!!!</p>
     </div>
     <div class="rect5">
-        <a href="staff_login"><img src="pathology/doctor.png" alt="doctor"></a>
-        <a href="patient_login"><img src="pathology/patient.png" alt="patient"></a>
-        <a href="staff_login"><img src="pathology/Pathology.png" alt="pathology"></a>
+        <a href="staff_login"><img src="pathology/doctor.png" alt="doctor" title="Doctor Login"></a>
+        <a href="patient_login"><img src="pathology/patient.png" alt="patient" title="Patient Login"></a>
+        <a href="staff_login"><img src="pathology/Pathology.png" alt="pathology" title="Pathology Login"></a>
     </div>
 
     <div class="rect6">
-        <a href="staff_login"><img src="pathology/Ellipse 4.png" alt="reception"></a>
-        <a href="staff_login"><img src="pathology/Ellipse 5.png" alt="admin"></a>
+        <a href="staff_login"><img src="pathology/Ellipse 4.png" alt="reception" title="Reception Login"></a>
+        <a href="staff_login"><img src="pathology/Ellipse 5.png" alt="admin" title="Admin Login"></a>
     </div>
     <div class="rect7">
         <p>Our Facilities</p>
@@ -205,9 +210,7 @@ body{
         <img src="pathology/img4.jpg">
         <img src="pathology/img5.jpg">
     </div>
-    <div class="footer">
-        <p>All Rights Reserved!</p>
-    </div>
+    @include('footer')
 
 
 </body>

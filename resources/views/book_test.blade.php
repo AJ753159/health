@@ -91,20 +91,6 @@
     button:hover {
         opacity: 0.8;
     }
-    .footer{
-        background: #575459;
-        width: 100%;
-        height: 10vh;
-        position: fixed;
-        bottom:0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .footer p{
-        color: white;
-
-    }
     input{
         width: 500px;
         padding: 12px 20px;
@@ -140,6 +126,9 @@
                     <option value="{{ $item->{'test_id'} }}">{{$item->{'test_name'} }}</option>
                 @endforeach 
             </select>
+            @if ($errors->has('test_id'))
+                <span class="danger">{{ $errors->first('test_id') }}</span>
+            @endif
         </div>
         <div class="select_dept">
             <select id="test" name="appointment_id" required>
@@ -148,18 +137,25 @@
                     <option value="{{ $item->{'appointment_id'} }}">{{$item->{'appointment_id'} }}</option>
                 @endforeach 
             </select>
+            @if ($errors->has('appointment_id'))
+                <span class="danger">{{ $errors->first('appointment_id') }}</span>
+            @endif
         </div>
         <div class="date">
             <input type="text" id="datepicker" name="date" placeholder="Select Appointment Date">
+            @if ($errors->has('date'))
+                <span class="danger">{{ $errors->first('date') }}</span>
+            @endif
         </div>
         <div class="time">
-            <input type='text' id="timepicker" name="time" placeholder="Select Appointment Time" required />
+            <input type='text' id="timepicker" name="time" placeholder="Select Appointment Time" />
+            @if ($errors->has('time'))
+                <span class="danger">{{ $errors->first('time') }}</span>
+            @endif
         </div>
         <button type="submit">Submit</button>
     </form>
-    <div class="footer">
-        <p>All Rights Reserved!</p>
-    </div>
+    @include('footer')
    
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>

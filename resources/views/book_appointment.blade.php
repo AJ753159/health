@@ -92,20 +92,7 @@
     button:hover {
         opacity: 0.8;
     }
-    .footer{
-        background: #575459;
-        width: 100%;
-        height: 10vh;
-        position: fixed;
-        bottom:0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .footer p{
-        color: white;
 
-    }
     input{
         width: 500px;
         padding: 12px 20px;
@@ -120,6 +107,11 @@
         flex-wrap: wrap;
         padding: 20px;
         justify-content: center;
+    }
+    .danger{
+        /* background: white; */
+        padding: 12px 20px;
+        color: #CC0000
     }
     
     </style>
@@ -141,10 +133,16 @@
                     <option value="{{ $item->{'department'} }}">{{$item->{'department'} }}</option>
                 @endforeach 
             </select>
+            @if ($errors->has('department'))
+                <span class="danger">{{ $errors->first('department') }}</span>
+            @endif
         </div>
         <div class="select_doct">
             <select id="doctor" name="doctor_id" required>
             </select>
+            @if ($errors->has('doctor_id'))
+                <span class="danger">{{ $errors->first('doctor_id') }}</span>
+            @endif
         </div>
         
         {{-- <div class="date">
@@ -157,16 +155,20 @@
         </div> --}}
         <div class="date">
             <input type="text" id="datepicker" name="date" placeholder="Select Appointment Date">
+            @if ($errors->has('date'))
+                <span class="danger">{{ $errors->first('date') }}</span>
+            @endif
         </div>
         <div class="time">
-            <input type='text' id="timepicker" name="time" placeholder="Select Appointment Time" required />
+            <input type='text' id="timepicker" name="time" placeholder="Select Appointment Time" />
+            @if ($errors->has('time'))
+                <span class="danger">{{ $errors->first('time') }}</span>
+            @endif
         </div>
         {{-- {!! Form::text('date', '', array('id' => 'datepicker')) !!} --}}
         <button type="submit">Submit</button>
     </form>
-    <div class="footer">
-        <p>All Rights Reserved!</p>
-    </div>
+    @include('footer')
     <script>
         $("#doctor").append('<option value="0" selected disabled> Select Doctor </option>');
         jQuery(document).ready(function(){

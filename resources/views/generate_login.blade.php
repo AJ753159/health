@@ -151,6 +151,14 @@
 			  /* background: white; */
 			  color: #CC0000
 		  }
+    .image3{
+        width: 70px; 
+        height: 69px;
+        position: absolute; 
+        top: 30px; 
+        left: 10px;
+        padding: 1%;
+    }
     </style>
     <title>Registration</title>
 </head>
@@ -202,9 +210,7 @@
         
         <button type="submit">Generate Login</button>
     </form>
-    <div class="footer">
-        <p>All Rights Reserved.</p>
-    </div>
+    @include('footer')
 
         
 

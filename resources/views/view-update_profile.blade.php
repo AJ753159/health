@@ -12,8 +12,6 @@
     }
     body{
         background: rgba(131, 103, 123, 0.4);
-        /* justify-content: center; */
-        /* padding: 140px */
         margin-top: 50px;
         text-align: center;
     }
@@ -39,7 +37,6 @@
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
-        /* border-radius: 30px; */
     }
     button {
         width: 62px;
@@ -51,35 +48,37 @@
         opacity: 0.8;
         cursor: pointer;
     }
+    .danger{
+        padding: 12px 20px;
+        color: #CC0000
+    }
     </style>
+    <title>View Update Profile</title>
 </head>
 <body>
-    @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif
     <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="/search" enctype="multipart/form-data">
         @csrf
-        <div class="select_rolet">
-            <select id="emp_role" name="emp_role" required>
+        <div class="select_role">
+            <select id="emp_role" name="emp_role">
                 <option>Select Role</option>
                 @foreach ($items as $item)
-                    {{-- <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}> 
-                        {{ $value }} 
-                    </option> --}}
                     <option value="{{ $item->{'emp_role'} }}">{{$item->{'emp_role'} }}</option>
                 @endforeach    
             </select>
-            {{-- <input type="number" id="name" placeholder="Enter Employee Id" name="Employee_ID" required> --}}
+            @if ($errors->has('emp_role'))
+                <span class="danger">{{ $errors->first('emp_role') }}</span>
+            @endif
         </div>
         <div class="name">
-            {{-- <input type="number" id="name" placeholder="Enter Employee Id" name="Employee_ID" required> --}}
-            <select id="Employee_ID" name="Employee_ID" required>
+            <select id="Employee_ID" name="Employee_ID">
             </select>
+            @if ($errors->has('Employee_ID'))
+                <span class="danger">{{ $errors->first('Employee_ID') }}</span>
+            @endif
         </div>
         <button type="submit" style="background:url('pathology/noun_Search_4341145 2.png');"> </button>
     </form>
+    @include('footer')
     <script>
         $("#Employee_ID").append('<option value="0" selected disabled> Select Employee </option>');
         jQuery(document).ready(function(){
@@ -98,7 +97,7 @@
                         // console.log('success');
                         console.log(data);
                         $("#Employee_ID").empty();
-                        $("#Employee_ID").append('<option value=0 selected disabled> Select Doctor </option>');
+                        $("#Employee_ID").append('<option value=0 selected disabled> Select Employee </option>');
                         for(var i=0; i<data.length;i++){
                             $("#Employee_ID").append('<option value="' +data[i].Employee_ID+'">'+data[i].Employee_name+
                                 '</option>');
@@ -109,7 +108,6 @@
                     }
                 });
             });
-            
         });      
     </script>
 </body>

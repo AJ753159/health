@@ -66,11 +66,9 @@
     <title>Doctor Profile</title>
 </head>
 <body>
-    @if ($data->{'emp_role'} == 'doctor')
     <div class="profile_img">
         <img src= "image/{{ $data -> {'profileImage'} }}" style="width: 206px;height: 203px;" />
     </div>
-    
     <div class="table">
         <table>
           <tr>
@@ -87,17 +85,8 @@
           <tr>
             <td colspan="3"><b>Address: </b>{{ $data -> {'Address'} }}</td>
           </tr>
-          {{-- <tr>
-            <td colspan="3"><b>Address: </b>{{ $data -> {'emp_role'} }}</td>
-          </tr> --}}
-          
         </table>
     </div>
-    @endif
-    
-    <div class="footer">
-        <p>All Rights Reserved.</p>
-    </div>
-
+    @include('footer')
 </body>
 </html>

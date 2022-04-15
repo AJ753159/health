@@ -18,7 +18,10 @@
     }
     .info{
         background: #33b5e5;
-        width: 10%;
+        width: 15%;
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 </style>
 @if (session()->has('success'))

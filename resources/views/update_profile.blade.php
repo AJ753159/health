@@ -18,7 +18,6 @@
         padding-top: 20px;
         display: flex;
         flex-wrap: wrap;
-        /* width: 100%; */
         justify-content: center;
 
     }
@@ -27,7 +26,6 @@
         flex-wrap: wrap;
         width:100%;
         justify-content: center;
-        /* padding: 20px; */
 
     }
     table{
@@ -41,26 +39,6 @@
     }
     td{
         padding: 10px;
-    }
-    /* table, tr,td {
-        text-align: center;
-        
-        background: #E3AFBC;
-        /* border: 5px solid #e8bfcaa6 ; */
-        /* border-collapse: collapse; */
-        /*}  */
-    .footer{
-        background: #575459;
-        width: 100%;
-        height: 10vh;
-        position: fixed;
-        bottom:0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .footer p{
-        color: white;
     }
     button {
         background: #A8ADD9;
@@ -77,32 +55,26 @@
         opacity: 0.8;
     }
     </style>
-    <title>Admin Profile</title>
+    <title>Update Profile</title>
 </head>
 <body>
-    {{-- @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif --}}
     @include('flash')
-    {{-- @if ($data->{'emp_role'} == 'admin') --}}
     <div class="profile_img">
-        {{-- <img src="pathology/doctor_photo.jpg" style="width:206px; height:208px; "> --}}
         <img src= "/image/{{ $data -> {'profileImage'} }}" style="width: 206px;height: 203px;" />
     </div>
     <div class="table">
     <table>
         <tr>
-        <td><b>Name: </b>{{ $data -> {'Employee_name'} }}</td>
-        <td><b>Mobile No. </b> {{ $data -> {'Mobile_No'} }}</td>
+            <td><b>Name: </b>{{ $data -> {'Employee_name'} }}</td>
+            <td><b>Mobile No. </b> {{ $data -> {'Mobile_No'} }}</td>
         </tr>
         <tr>
-        <td><b>Qualification: </b> {{ $data -> {'qualifications'} }}</td>
-        <td><b>Gender: </b>{{ $data -> {'Gender'} }}</td>
+            <td><b>Qualification: </b> {{ $data -> {'qualifications'} }}</td>
+            <td><b>Gender: </b>{{ $data -> {'Gender'} }}</td>
         </tr>
         <tr>
-        <td><b>Email: </b>{{ $data -> {'Email_id'} }}</td>
+            <td><b>Email: </b>{{ $data -> {'Email_id'} }}</td>
+            <td><b>Employee Role: </b>{{ $data -> {'emp_role'} }}</td>
         </tr>
         <tr>
             <td colspan="3"><b>Address: </b>{{ $data -> {'Address'} }}</td>
@@ -112,10 +84,6 @@
         </tr>
     </table>
     </div>
-    {{-- @endif --}}
-    <div class="footer">
-        <p>All Rights Reserved.</p>
-    </div>
-
+    <@include('footer')
 </body>
 </html>
