@@ -1,4 +1,3 @@
-<!-- <p align="center"><a href="" target="_blank"><img src="health\public\pathology/Logo-removebg-preview.png" width="400"></a></p> -->
 <p align="center"><a href="" target="_blank"><img src="https://github.com/AJ753159/health/blob/master/public/pathology/Logo-removebg-preview.png" width="400"></a></p>
 
 ## About Health Record Management System
