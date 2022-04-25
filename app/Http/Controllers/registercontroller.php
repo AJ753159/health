@@ -54,7 +54,12 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('DoctorNurseDashboard', compact('data'));
+        if($data->emp_role == 'doctor'){
+            return view('DoctorNurseDashboard', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
 
@@ -65,7 +70,12 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('doctor_profile', compact('data'));
+        if($data->emp_role == 'doctor'){
+            return view('doctor_profile', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     public function view_appointment()
@@ -82,11 +92,17 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        $items = DB::table('bookings')->select('*')->where('id', '=', $request->id)->first();
-        $data = DB::table('users')->select('*')->where('Aadharno','=',$items->Aadharno)->first();
-        $users = DB::table('bookings')->select('*')->where('Aadharno', '=', $items->Aadharno)->get();
-        $reports = DB::table('booktests')->select('*')->where('appointment_id', '=', $items->appointment_id)->first();
-        return view('prescription',compact('data','users','items','reports'));
+        if($data->emp_role == 'doctor'){
+            $items = DB::table('bookings')->select('*')->where('id', '=', $request->id)->first();
+            $data = DB::table('users')->select('*')->where('Aadharno','=',$items->Aadharno)->first();
+            $users = DB::table('bookings')->select('*')->where('Aadharno', '=', $items->Aadharno)->get();
+            $reports = DB::table('booktests')->select('*')->where('appointment_id', '=', $items->appointment_id)->first();
+            return view('prescription',compact('data','users','items','reports'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
      }
 
 
@@ -95,8 +111,14 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        $items = DB::table('bookings')->select('*')->where('appointment_id', '=', $request->appointment_id )->first();
-        return view('add_prescription',compact('items'));
+        if($data->emp_role == 'doctor'){
+            $items = DB::table('bookings')->select('*')->where('appointment_id', '=', $request->appointment_id )->first();
+            return view('add_prescription',compact('items'));  
+        }
+        else{
+            return redirect()->back();
+        }
+        
     }
 
 
@@ -116,8 +138,17 @@ class registercontroller extends Controller
 
 
     public function report(Request $request, $appointment_id){
-        $users = DB::table('booktests')->select('*')->where('appointment_id' ,$request->appointment_id)->get();
-        return view('report',compact('users'));
+        if(Session()->has('loginId')){
+            $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
+        }
+        if($data->emp_role == 'doctor'){
+            $users = DB::table('booktests')->select('*')->where('appointment_id' ,$request->appointment_id)->get();
+            return view('report',compact('users'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
     }
     public function downloadFile($file_name){
         $filepath = public_path("report\\$file_name" );
@@ -138,9 +169,27 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('admin', compact('data'));
+        if($data->emp_role == 'admin'){
+            return view('admin', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
+    public function generate_login()
+    {
+        $data = array();
+        if(Session()->has('loginId')){
+            $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
+        }
+        if($data->emp_role == 'admin'){
+            return view('generate_login', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
+    }
 
     //Admin profile Function call
     public function admin_profile()
@@ -148,7 +197,12 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('admin_profile', compact('data'));
+        if($data->emp_role == 'admin'){
+            return view('admin_profile', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     //New staffs create function
@@ -193,8 +247,14 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        $items=DB::table('staffs')->distinct()->select('emp_role')->orderBy('emp_role','asc')->get();
-        return view('view-update_profile', compact('items'));
+        if($data->emp_role == 'admin'){
+            $items=DB::table('staffs')->distinct()->select('emp_role')->orderBy('emp_role','asc')->get();
+            return view('view-update_profile', compact('items'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
     }
 
 
@@ -247,8 +307,14 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        $data = DB::table('staffs')->select('*')->where('Employee_ID','=',$request->Employee_ID)->first();
-        return view('edit_profile',compact('data'));
+        if($data->emp_role == 'admin'){
+            $data = DB::table('staffs')->select('*')->where('Employee_ID','=',$request->Employee_ID)->first();
+            return view('edit_profile',compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
      }
 
     public function edit(Request $request ,$Employee_ID)
@@ -283,8 +349,14 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        $data = DB::table('staffs')->select('*')->where('Employee_ID','=',$request->Employee_ID)->first();
-        return view('update_profile',compact('data'));
+        if($data->emp_role == 'admin'){
+            $data = DB::table('staffs')->select('*')->where('Employee_ID','=',$request->Employee_ID)->first();
+            return view('update_profile',compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
      }
 
 
@@ -310,7 +382,13 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('NonMedical-staff', compact('data'));
+        if($data->emp_role == 'nonmedical'){
+            return view('NonMedical-staff', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
     }
 
     //Nonmedical profile Function call
@@ -319,7 +397,13 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('nonmedical_profile', compact('data'));
+        if($data->emp_role == 'nonmedical'){
+            return view('nonmedical_profile', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
     }
 
     //Registeration page function call
@@ -328,7 +412,13 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('registration_non-medical_staff', compact('data'));
+        if($data->emp_role == 'nonmedical'){
+            return view('registration_non-medical_staff', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
     }
 
 
@@ -408,7 +498,12 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('PathologyLab', compact('data'));
+        if($data->emp_role == 'pathology'){
+            return view('PathologyLab', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     //pathology profile Function call
@@ -417,17 +512,28 @@ class registercontroller extends Controller
         if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        return view('pathology_profile', compact('data'));
+        if($data->emp_role == 'pathology'){
+            return view('pathology_profile', compact('data'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
     }
 
     public function view_test()
     {
-         if(Session()->has('loginId')){
+        if(Session()->has('loginId')){
             $data = DB::table('staffs')->select('*')->where('Employee_name','=', Session()->get('loginId'))->first();
         }
-        $users = DB::table('booktests')->select('booktests.id','booktests.date','booktests.time','booktests.report_name','users.Name as u_name')->leftjoin('users', 'users.Aadharno', '=', 'booktests.Aadharno')->get();
-
-        return view('view_test',compact('users','data'));
+        if($data->emp_role == 'pathology'){
+            $users = DB::table('booktests')->select('booktests.id','booktests.date','booktests.time','booktests.report_name','users.Name as u_name')->leftjoin('users', 'users.Aadharno', '=', 'booktests.Aadharno')->get();
+            return view('view_test',compact('users','data'));
+        }
+        else{
+            return redirect()->back();
+        }
+        
      }
 
     public function upload(Request $request ,$id, $Employee_ID)

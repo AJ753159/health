@@ -93,7 +93,7 @@
       flex: 1;
       flex-basis: 30%;
       margin-top: 3%;
-
+      margin-left: 10%;
     }
     .Info-4{
       flex: 1;
@@ -108,6 +108,11 @@
       .image2{
         width: 50px;
         left: 90%;
+      }
+      .Info-3{
+        flex: 1;
+        flex-basis: 30%;
+        margin-top: 3%;
       }
     }
   </style>

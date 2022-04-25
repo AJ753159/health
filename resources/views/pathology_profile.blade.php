@@ -78,7 +78,7 @@
             <td><b>Mobile No. </b> {{ $data -> {'Mobile_No'} }}</td>
           </tr>
           <tr>
-            <td><b>Qualification</b> BDMS</td>
+            <td><b>Qualification: </b> {{ $data -> {'qualifications'} }}</td>
             <td><b>Gender: </b>{{ $data -> {'Gender'} }}</td>
           </tr>
           <tr>

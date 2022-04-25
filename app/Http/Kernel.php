@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        // \App\Http\Middleware\DisableBackBtn::class,
     ];
 
     /**
@@ -37,6 +38,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            // \App\Http\Middleware\StaffAuth::class,
+            // \App\Http\Middleware\DisableBackBtn::class,
         ],
 
         'api' => [
@@ -44,6 +47,15 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'StaffAuth' => [
+            \App\Http\Middleware\StaffAuth::class,
+        ],
+        'login' => [
+            \App\Http\Middleware\login::class,
+        ],
+        'DisableBackBtn' => [
+            \App\Http\Middleware\DisableBackBtn::class,
+        ]
     ];
 
     /**
@@ -63,5 +75,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'DisableBackBtn' => \App\Http\Middleware\DisableBackBtn::class,
     ];
 }
