@@ -1,4 +1,5 @@
-<p align="center"><a href="" target="_blank"><img src="health\public\pathology/Logo-removebg-preview.png" width="400"></a></p>
+<!-- <p align="center"><a href="" target="_blank"><img src="health\public\pathology/Logo-removebg-preview.png" width="400"></a></p> -->
+<p align="center"><a href="" target="_blank"><img src="https://github.com/AJ753159/health/blob/master/public/pathology/Logo-removebg-preview.png" width="400"></a></p>
 
 ## About Health Record Management System
 
@@ -67,7 +68,7 @@ You can now access the server at http://localhost:8000
 
 ----------
 
-# Testing API
+# Testing Web
 
 Run the laravel development server
 
